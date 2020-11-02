@@ -1,6 +1,8 @@
 #!/bin/bash
 
+
 #This script backs up a user's home directory to /tmp/.
+#The purpose of this block is for a user to request a backup of their home directory where it is then saved in a temporary directory.
 
 function backup {
 
@@ -39,7 +41,8 @@ function backup {
 	function total_archived_files {
 		tar -tzf $1 | grep -v /$ | wc -l
 	}
-
+        #I find the tar command intresting as it is used to compress directories into a single file
+        #the -c creates an archive -z compresses an archive and the -f allows it to be specify a filename.
 	tar -czf $output $input 2> /dev/null
 
 	src_files=$( total_files $input )
